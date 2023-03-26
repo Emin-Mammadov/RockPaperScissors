@@ -1,0 +1,68 @@
+html {
+    font-size: 20px;
+    background-size: 100% 100%;
+    font-family: 'Gloria Hallelujah', sans-serif;
+}
+h1{
+    text-align: center;
+    color: black;
+    background-color:burlywood;
+    font-weight: bold;
+}
+h2{
+    text-align: center;
+    color: black;
+    background-color: antiquewhite;
+    font-weight: bold;
+}
+body{
+    background-image: url('images/background.jpeg');
+    background-size:cover;
+    margin: 0;
+}
+img{
+    width: 125px;
+    height: 150px;
+}
+.btn {
+    margin: 150px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    outline: none;
+    
+}
+div{
+    text-align: center;
+    padding-right: 30px;
+    background-color: antiquewhite;
+    font-size: 25px;
+}
+button:hover {
+    transform: scale(1.2);
+    border-color:gold;
+}
+footer {
+    background-color: gray;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    display: block;
+    padding: 5px;
+}
+#gh-logo {
+    width: 35px;
+    height: 35px;
+    margin-bottom: -9px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+a:-webkit-any-link {
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: underline;
+}

@@ -7,32 +7,48 @@ function getComputerChoice(){
     return choices[randomchoice];
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(selection) {
+    const computerSelection = getComputerChoice();
+    const playerSelection = selection;
+    const score = document.querySelector('.score');
+    const result = document.querySelector('.result');
     if ((computerSelection == 'rock' && playerSelection.toLowerCase() == 'scissors') 
     || (computerSelection == 'paper' && playerSelection.toLowerCase() == 'rock') 
-    || (computerSelection == 'scissors' && playerSelection.toLowerCase() == 'paper')){
+    || (computerSelection == 'scissors' && playerSelection.toLowerCase() == 'paper'))
+    {
         computerScore++;
-        return `You Lose! ${computerSelection} beats ${playerSelection.toLowerCase()}`;}
+        score.textContent = `Your score: ${yourScore} Computer score: ${computerScore}`;
+        if (computerScore == 5 && computerScore > yourScore && computerScore != yourScore) 
+        {
+            result.textContent = `You Lost the game:/ Maybe find something else to do?`;
+            computerScore = 0;
+            yourScore = 0;
+        }
+        else result.textContent = `You Lose! ${computerSelection} beats ${playerSelection.toLowerCase()}`;
+    }
     else if ((computerSelection == 'scissors' && playerSelection.toLowerCase() == 'rock')
         || (computerSelection == 'rock' && playerSelection.toLowerCase() == 'paper')
-        || (computerSelection == 'paper' && playerSelection.toLowerCase() == 'scissors')){
+        || (computerSelection == 'paper' && playerSelection.toLowerCase() == 'scissors'))
+    {
         yourScore++;
-        return `You Win! ${playerSelection.toLowerCase()} beats ${computerSelection}`;}
-    else (computerSelection == playerSelection.toLowerCase())
-        return `Draw!`;
-}
-
-function game(){
-    for (let i = 0; i < 5; i++) {
-        const computerSelection = getComputerChoice();
-        const playerSelection = prompt('Choose your item: ');
-        console.log(playRound(playerSelection,computerSelection));
+        score.textContent = `Your score: ${yourScore} Computer score: ${computerScore}`;
+        if (yourScore == 5 && computerScore < yourScore && computerScore != yourScore) 
+        {
+            result.textContent = `You won the game! Congratulations`;
+            computerScore = 0;
+            yourScore = 0;
+        }
+        else result.textContent =`You Win! ${playerSelection.toLowerCase()} beats ${computerSelection}`;
     }
-    if (yourScore > computerScore) return `Congratulations, you won the game! Your score: ${yourScore} Computer's score: ${computerScore}`;
-    else if (yourScore < computerScore) return `Unfortunately, you lost the game! Your score: ${yourScore} Computer's score: ${computerScore}`;
-    else return `Game ends with a Draw! Your score: ${yourScore} Computer's score: ${computerScore}`;
+    else if (computerSelection == playerSelection.toLowerCase())
+    {
+        score.textContent = `Your score: ${yourScore} Computer score: ${computerScore}`;
+        result.textContent = `It's a tie! You both selected ${computerSelection}`;
+    }
 }
-
-console.log(game())
-
-
+const btnr = document.querySelector('#rock');
+btnr.addEventListener('click', ()=>playRound('rock'));
+const btnp = document.querySelector('#paper');
+btnp.addEventListener('click', () => playRound('paper'));
+const btns = document.querySelector('#scissors');
+btns.addEventListener('click', () => playRound('scissors'));
